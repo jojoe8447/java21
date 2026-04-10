@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: emp-app
-          image: ghcr.io/jojoe8447/emp-app:local
+          image: ghcr.io/jojoe8447/emp-app:v2
           imagePullPolicy: Always
           env:
             - name: POD_NAME
