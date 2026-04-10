@@ -114,4 +114,14 @@ class EmployeeControllerTest {
         mockMvc.perform(get("/api/employees/{id}", employeeId))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    void shouldReturnSystemInfo() throws Exception {
+        mockMvc.perform(get("/api/health/info"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.applicationName").value("employee-management"))
+                .andExpect(jsonPath("$.instanceId").exists())
+                .andExpect(jsonPath("$.podName").isNotEmpty())
+                .andExpect(jsonPath("$.hostName").isNotEmpty());
+    }
 }
